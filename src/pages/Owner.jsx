@@ -6,6 +6,12 @@ import InventoryReport from '../components/InventoryReport';
 import DashboardStats from '../components/DashboardStats';
 import FinancialReport from '../components/FinancialReport';
 import StockManagement from '../components/StockManagement';
+import ProfitReport from '../components/ProfitReport';
+import CashierReport from '../components/CashierReport';
+import CategoryReport from '../components/CategoryReport';
+import SupplierReport from '../components/SupplierReport';
+import PeakHoursReport from '../components/PeakHoursReport';
+import SalesTrendReport from '../components/SalesTrendReport';
 
 const Owner = ({ user, onLogout }) => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -34,7 +40,14 @@ const Owner = ({ user, onLogout }) => {
             <div className="flex items-center space-x-4">
               <div className="text-right">
                 <p className="text-sm">{user.displayName || user.email}</p>
-                <p className="text-xs opacity-75">{new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p className="text-xs opacity-75">
+                  {new Date().toLocaleDateString('id-ID', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </p>
               </div>
               <button
                 onClick={onLogout}
@@ -71,7 +84,6 @@ const Owner = ({ user, onLogout }) => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === 'dashboard' && (
           <>
-            {/* Date Selector */}
             <div className="mb-6">
               <input
                 type="date"
@@ -92,43 +104,93 @@ const Owner = ({ user, onLogout }) => {
         
         {activeTab === 'reports' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
-              <div className="text-4xl mb-4">📊</div>
+            {/* Laporan Profit */}
+            <div 
+              onClick={() => setActiveTab('profit')}
+              className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all cursor-pointer hover:border-blue-300 hover:scale-[1.02]"
+            >
+              <div className="text-4xl mb-4">💰</div>
               <h3 className="text-lg font-bold text-gray-900">Laporan Profit</h3>
               <p className="text-sm text-gray-500 mt-1">Lihat laporan laba rugi</p>
+              <div className="mt-4 text-blue-600 text-sm font-medium flex items-center">
+                Lihat Detail <span className="ml-1">→</span>
+              </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
+            {/* Laporan Kasir */}
+            <div 
+              onClick={() => setActiveTab('cashier')}
+              className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all cursor-pointer hover:border-blue-300 hover:scale-[1.02]"
+            >
               <div className="text-4xl mb-4">👥</div>
               <h3 className="text-lg font-bold text-gray-900">Laporan Kasir</h3>
               <p className="text-sm text-gray-500 mt-1">Kinerja dan transaksi per kasir</p>
+              <div className="mt-4 text-blue-600 text-sm font-medium flex items-center">
+                Lihat Detail <span className="ml-1">→</span>
+              </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
-              <div className="text-4xl mb-4">🏷️</div>
+            {/* Laporan per Kategori */}
+            <div 
+              onClick={() => setActiveTab('category')}
+              className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all cursor-pointer hover:border-blue-300 hover:scale-[1.02]"
+            >
+              <div className="text-4xl mb-4">📊</div>
               <h3 className="text-lg font-bold text-gray-900">Laporan per Kategori</h3>
               <p className="text-sm text-gray-500 mt-1">Penjualan berdasarkan kategori</p>
+              <div className="mt-4 text-blue-600 text-sm font-medium flex items-center">
+                Lihat Detail <span className="ml-1">→</span>
+              </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
-              <div className="text-4xl mb-4">📦</div>
+            {/* Laporan Supplier */}
+            <div 
+              onClick={() => setActiveTab('supplier')}
+              className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all cursor-pointer hover:border-blue-300 hover:scale-[1.02]"
+            >
+              <div className="text-4xl mb-4">🏭</div>
               <h3 className="text-lg font-bold text-gray-900">Laporan Supplier</h3>
               <p className="text-sm text-gray-500 mt-1">Data pembelian dari supplier</p>
+              <div className="mt-4 text-blue-600 text-sm font-medium flex items-center">
+                Lihat Detail <span className="ml-1">→</span>
+              </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
+            {/* Jam Sibuk */}
+            <div 
+              onClick={() => setActiveTab('peakhours')}
+              className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all cursor-pointer hover:border-blue-300 hover:scale-[1.02]"
+            >
               <div className="text-4xl mb-4">⏰</div>
               <h3 className="text-lg font-bold text-gray-900">Jam Sibuk</h3>
               <p className="text-sm text-gray-500 mt-1">Analisis waktu transaksi terbanyak</p>
+              <div className="mt-4 text-blue-600 text-sm font-medium flex items-center">
+                Lihat Detail <span className="ml-1">→</span>
+              </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
+            {/* Tren Penjualan */}
+            <div 
+              onClick={() => setActiveTab('salestrend')}
+              className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all cursor-pointer hover:border-blue-300 hover:scale-[1.02]"
+            >
               <div className="text-4xl mb-4">📈</div>
               <h3 className="text-lg font-bold text-gray-900">Tren Penjualan</h3>
               <p className="text-sm text-gray-500 mt-1">Grafik pertumbuhan bulanan</p>
+              <div className="mt-4 text-blue-600 text-sm font-medium flex items-center">
+                Lihat Detail <span className="ml-1">→</span>
+              </div>
             </div>
           </div>
         )}
+
+        {/* Halaman-halaman baru - INI YANG DIPINDAHKAN KE LUAR */}
+        {activeTab === 'profit' && <ProfitReport />}
+        {activeTab === 'cashier' && <CashierReport />}
+        {activeTab === 'category' && <CategoryReport />}
+        {activeTab === 'supplier' && <SupplierReport />}
+        {activeTab === 'peakhours' && <PeakHoursReport />}
+        {activeTab === 'salestrend' && <SalesTrendReport />}
       </main>
     </div>
   );
