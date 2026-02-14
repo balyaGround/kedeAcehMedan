@@ -1,13 +1,503 @@
-body {
+/* index.css - POS Kede Aceh */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom Styles */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #10b981;
+  --accent-color: #f59e0b;
+  --danger-color: #ef4444;
+  --success-color: #10b981;
+  --dark-color: #1f2937;
+  --light-color: #f9fafb;
+}
+
+/* Base Styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f3f4f6;
+  color: #1f2937;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Custom Animations */
+
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Utility Classes */
+
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s infinite;
+}
+
+/* POS Specific Styles */
+.pos-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200;
+}
+
+.btn-success {
+  @apply bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200;
+}
+
+.btn-warning {
+  @apply bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200;
+}
+
+.btn-outline {
+  @apply border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg transition duration-200;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-100;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-gray-200;
+}
+
+.card-body {
+  @apply p-6;
+}
+
+.card-footer {
+  @apply px-6 py-4 border-t border-gray-200 bg-gray-50 rounded-b-xl;
+}
+
+/* Form Styles */
+.form-input {
+  @apply mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-select {
+  @apply mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md;
+}
+
+/* Table Styles */
+.table-container {
+  @apply overflow-x-auto rounded-lg border border-gray-200;
+}
+
+.table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.table thead {
+  @apply bg-gray-50;
+}
+
+.table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.table tbody {
+  @apply bg-white divide-y divide-gray-200;
+}
+
+.table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-danger {
+  @apply bg-red-100 text-red-800;
+}
+
+.badge-info {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-primary {
+  @apply bg-blue-600 text-white;
+}
+
+/* Alert Styles */
+.alert {
+  @apply p-4 rounded-lg border;
+}
+
+.alert-success {
+  @apply bg-green-50 border-green-200 text-green-800;
+}
+
+.alert-error {
+  @apply bg-red-50 border-red-200 text-red-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-50 border-yellow-200 text-yellow-800;
+}
+
+.alert-info {
+  @apply bg-blue-50 border-blue-200 text-blue-800;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-slide-in;
+}
+
+/* Product Card Styles */
+.product-card {
+  @apply bg-white rounded-lg shadow hover:shadow-md border border-gray-100 transition-all duration-200 cursor-pointer hover:border-blue-300;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-card-header {
+  @apply p-3 border-b border-gray-100;
+}
+
+.product-card-body {
+  @apply p-4;
+}
+
+.product-card-footer {
+  @apply p-3 border-t border-gray-100 bg-gray-50 rounded-b-lg;
+}
+
+/* Cart Item Styles */
+.cart-item {
+  @apply flex items-center justify-between py-3 px-4 border-b border-gray-100 hover:bg-gray-50 transition-colors duration-150;
+}
+
+.cart-item:last-child {
+  @apply border-b-0;
+}
+
+/* Receipt Styles */
+.receipt-container {
+  @apply bg-white p-6 rounded-lg shadow-lg;
+  width: 80mm; /* Standard receipt width */
+}
+
+.receipt-header {
+  @apply text-center mb-4 pb-4 border-b border-dashed border-gray-300;
+}
+
+.receipt-item {
+  @apply flex justify-between py-2;
+}
+
+.receipt-total {
+  @apply flex justify-between py-3 mt-3 pt-3 border-t border-dashed border-gray-300 font-bold text-lg;
+}
+
+/* Loading Spinner */
+.spinner {
+  @apply animate-spin rounded-full border-4 border-gray-200 border-t-blue-600;
+  width: 40px;
+  height: 40px;
+}
+
+.spinner-sm {
+  @apply animate-spin rounded-full border-2 border-gray-200 border-t-blue-600;
+  width: 20px;
+  height: 20px;
+}
+
+/* Kede Aceh Specific Styles */
+.kede-logo {
+  font-family: 'Arial Black', sans-serif;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-chip {
+  @apply px-3 py-1 rounded-full text-sm font-medium transition-all duration-200;
+}
+
+.category-chip.active {
+  @apply bg-blue-600 text-white shadow-md;
+}
+
+.category-chip:not(.active) {
+  @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+}
+
+/* Stock Indicators */
+.stock-indicator-low {
+  @apply bg-red-100 text-red-700 border border-red-200;
+}
+
+.stock-indicator-medium {
+  @apply bg-yellow-100 text-yellow-700 border border-yellow-200;
+}
+
+.stock-indicator-good {
+  @apply bg-green-100 text-green-700 border border-green-200;
+}
+
+/* Transaction Status */
+.status-paid {
+  @apply bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.status-cancelled {
+  @apply bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+/* Dashboard Stats Cards */
+.stats-card {
+  @apply bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow duration-200;
+}
+
+.stats-card-icon {
+  @apply p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4;
+}
+
+.stats-card-value {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.stats-card-label {
+  @apply text-sm text-gray-500 mt-1;
+}
+
+/* Login Page Styles */
+.login-container {
+  @apply min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-100 p-4;
+}
+
+.login-card {
+  @apply bg-white rounded-2xl shadow-xl p-8 w-full max-w-md;
+  animation: slideIn 0.5s ease-out;
+}
+
+.login-header {
+  @apply text-center mb-8;
+}
+
+.login-logo {
+  @apply text-3xl font-bold mb-2 kede-logo;
+}
+
+.login-subtitle {
+  @apply text-gray-600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .pos-container {
+    flex-direction: column;
+  }
+  
+  .table-container {
+    @apply border-0;
+  }
+  
+  .table {
+    @apply text-sm;
+  }
+  
+  .table th, .table td {
+    @apply px-3 py-2;
+  }
+  
+  .card {
+    @apply rounded-lg;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .receipt-container {
+    width: 100%;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Scrollbar for Firestore Data */
+.data-scroll-container {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Focus States for Accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Print Optimizations */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Loading Screen */
+.loading-screen {
+  @apply fixed inset-0 flex items-center justify-center bg-white z-50;
+}
+
+/* Empty State */
+.empty-state {
+  @apply text-center py-12;
+}
+
+.empty-state-icon {
+  @apply mx-auto h-12 w-12 text-gray-400;
+}
+
+.empty-state-title {
+  @apply mt-4 text-lg font-medium text-gray-900;
+}
+
+.empty-state-description {
+  @apply mt-2 text-gray-500;
+}
+
+/* Tooltip */
+.tooltip {
+  @apply absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible opacity-100;
+}
+
+/* Custom Checkbox and Radio */
+.custom-checkbox {
+  @apply h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500;
+}
+
+.custom-radio {
+  @apply h-5 w-5 text-blue-600 border-gray-300 focus:ring-blue-500;
+}
+
+
+/* Tambahkan di index.css bagian animasi */
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
 }
